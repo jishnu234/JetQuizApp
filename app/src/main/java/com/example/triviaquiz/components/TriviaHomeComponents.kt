@@ -1,9 +1,7 @@
 package com.example.triviaquiz.components
 
 import android.util.Log
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -55,6 +53,8 @@ fun Questions(
             correctAnswerState.value = (choicesState[it] == question.answer)
         }
     }
+
+    val scrollState = rememberScrollState()
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -63,7 +63,8 @@ fun Questions(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(12.dp),
+                .padding(12.dp)
+                .verticalScroll(scrollState),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
         ) {
@@ -80,7 +81,7 @@ fun Questions(
                     text = question.question,
                     modifier = Modifier
                         .align(alignment = Alignment.Start)
-                        .fillMaxHeight(0.3f),
+                        .height(200.dp),
                     fontSize = 17.sp,
                     color = AppColors.mOffWhite,
                     fontWeight = FontWeight.Bold,
