@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,16 +39,16 @@ fun Questions(
         phase = 0f
     )
 
-    val choicesState = remember(question) {
+    val choicesState = rememberSaveable(question) {
         question.choices.toMutableList()
     }
-    val correctAnswerState = remember(question) {
+    val correctAnswerState = rememberSaveable(question) {
         mutableStateOf<Boolean?>(null)
     }
-    val answerState = remember(question) {
+    val answerState = rememberSaveable(question) {
         mutableStateOf<Int?>(null)
     }
-    val updateAnswer: (Int) -> Unit = remember(question) {
+    val updateAnswer: (Int) -> Unit = rememberSaveable(question) {
         {
             answerState.value = it
             correctAnswerState.value = (choicesState[it] == question.answer)
@@ -234,7 +235,7 @@ fun DrawDottedLine(pathEffect: PathEffect) {
 
 @Preview(showBackground = true)
 @Composable
-fun showProgress(progress: Int = 12) {
+fun ShowProgress(progress: Int = 12) {
 
     val gradient = Brush.linearGradient(
         colors = listOf(
