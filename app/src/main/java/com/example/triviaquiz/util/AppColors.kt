@@ -15,11 +15,11 @@ object AppColors {
     val mBlue  = Color(0xff4b5f9e)
 
     val ShimmerColorShades = listOf(
-//        Color.LightGray.copy(0.9f),
-//        Color.LightGray.copy(0.2f),
-//        Color.LightGray.copy(0.9f)
-        mDarkPurple,
-        mOffWhite,
-        mDarkPurple
+        Color.LightGray.copy(0.9f),
+        Color.LightGray.copy(0.2f),
+        Color.LightGray.copy(0.9f)
+//        mDarkPurple.copy(0.9f),
+//        mDarkPurple.copy(0.2f),
+//        mDarkPurple.copy(0.9f)
     )
 }
